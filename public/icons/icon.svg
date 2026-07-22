@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle gradient -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dcfce7"/>
+      <stop offset="100%" stop-color="#bbf7d0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+
+  <!-- Pot -->
+  <path d="M196 380 h120 l-10 60 h-100 z" fill="#92400e" rx="8"/>
+  <rect x="186" y="370" width="140" height="20" rx="10" fill="#a3541a"/>
+
+  <!-- Stem -->
+  <path d="M256 370 Q256 300 256 260" stroke="#16a34a" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Left leaf -->
+  <ellipse cx="230" cy="280" rx="30" ry="15" fill="#22c55e" transform="rotate(-30 230 280)"/>
+
+  <!-- Right leaf -->
+  <ellipse cx="282" cy="250" rx="30" ry="15" fill="#22c55e" transform="rotate(30 282 250)"/>
+
+  <!-- Top leaf (new growth) -->
+  <ellipse cx="256" cy="220" rx="20" ry="35" fill="#4ade80"/>
+
+  <!-- Cute face on top leaf -->
+  <circle cx="249" cy="215" r="4" fill="#166534"/> <!-- left eye -->
+  <circle cx="263" cy="215" r="4" fill="#166534"/> <!-- right eye -->
+  <path d="M250 225 Q256 230 262 225" stroke="#166534" stroke-width="3" fill="none" stroke-linecap="round"/> <!-- smile -->
+</svg>
