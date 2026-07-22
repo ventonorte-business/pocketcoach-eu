@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "PocketCoach",
+    "tagline": "Micro-gewoontes. Macro-resultaten.",
+    "footer": "Gemaakt met 🌱 voor Europese geesten"
+  },
+  "habits": {
+    "title": "Gewoontes van vandaag",
+    "completed": "{count}/{total}",
+    "addNew": "Nieuwe gewoonte toevoegen"
+  },
+  "streak": {
+    "day": "dag",
+    "days": "dagen",
+    "record": "Record!",
+    "onFire": "On fire!"
+  },
+  "sprout": {
+    "sprout": "Net geplant!",
+    "growing": "Groeit sterk",
+    "blooming": "In volle bloei!",
+    "wilting": "Heeft aandacht nodig..."
+  },
+  "xp": {
+    "level": "Level {level}",
+    "progress": "{current}/{total} XP"
+  },
+  "quest": {
+    "title": "Dagelijkse Quest",
+    "completeAll": "Voltooi alle {count} gewoontes voor +25 XP bonus",
+    "allDone": "Alle gewoontes voltooid! +25 XP bonus"
+  },
+  "bossFight": {
+    "title": "Baasgevecht",
+    "progress": "{current}/{target} voltooiingen",
+    "defeated": "Baas verslagen! +{xp} XP",
+    "active": "Versla de {name}"
+  },
+  "guild": {
+    "title": "Jouw Gilde",
+    "members": "{count} leden",
+    "invite": "Vriend uitnodigen",
+    "join": "Gilde betreden",
+    "leaderboard": "Ranglijst"
+  },
+  "reflection": {
+    "title": "Dagelijkse Reflectie",
+    "placeholder": "Hoe ging je dag? (1 zin)",
+    "submit": "Reflectie opslaan",
+    "xpEarned": "+15 XP voor reflecteren"
+  },
+  "auth": {
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen",
+    "magicLink": "We sturen je een magic link",
+    "emailPlaceholder": "jouw@email.nl",
+    "checkInbox": "Check je inbox voor de magic link!"
+  },
+  "settings": {
+    "title": "Instellingen",
+    "timezone": "Tijdzone",
+    "notifications": "Pushmeldingen",
+    "language": "Taal",
+    "pro": "Upgrade naar Pro"
+  },
+  "pro": {
+    "title": "PocketCoach Pro",
+    "price": "€7,90/maand",
+    "features": [
+      "Onbeperkte gewoontes",
+      "Onbeperkte gildes",
+      "Baasgevechten",
+      "AI micro-coaching",
+      "Data-export"
+    ],
+    "cta": "Gratis proberen"
+  }
+}

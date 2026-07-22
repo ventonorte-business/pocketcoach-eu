@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "PocketCoach",
+    "tagline": "Mikro-Gewohnheiten. Makro-Ergebnisse.",
+    "footer": "Mit 🌱 gemacht — für europäische Köpfe"
+  },
+  "habits": {
+    "title": "Heutige Gewohnheiten",
+    "completed": "{count}/{total}",
+    "addNew": "Neue Gewohnheit hinzufügen"
+  },
+  "streak": {
+    "day": "Tag",
+    "days": "Tage",
+    "record": "Rekord!",
+    "onFire": "Feuer frei!"
+  },
+  "sprout": {
+    "sprout": "Gerade gepflanzt!",
+    "growing": "Wächst kräftig",
+    "blooming": "In voller Blüte!",
+    "wilting": "Braucht Aufmerksamkeit..."
+  },
+  "xp": {
+    "level": "Level {level}",
+    "progress": "{current}/{total} XP"
+  },
+  "quest": {
+    "title": "Tagesquest",
+    "completeAll": "Erledige alle {count} Gewohnheiten für +25 XP Bonus",
+    "allDone": "Alle Gewohnheiten erledigt! +25 XP Bonus"
+  },
+  "bossFight": {
+    "title": "Boss-Kampf",
+    "progress": "{current}/{target} Abschlüsse",
+    "defeated": "Boss besiegt! +{xp} XP",
+    "active": "Besiege den {name}"
+  },
+  "guild": {
+    "title": "Deine Gilde",
+    "members": "{count} Mitglieder",
+    "invite": "Freund einladen",
+    "join": "Gilde beitreten",
+    "leaderboard": "Bestenliste"
+  },
+  "reflection": {
+    "title": "Tagesreflexion",
+    "placeholder": "Wie lief dein Tag? (1 Satz)",
+    "submit": "Reflexion speichern",
+    "xpEarned": "+15 XP fürs Reflektieren"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "magicLink": "Wir senden dir einen Magic-Link",
+    "emailPlaceholder": "deine@email.de",
+    "checkInbox": "Schau in deinen Posteingang!"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "timezone": "Zeitzone",
+    "notifications": "Push-Benachrichtigungen",
+    "language": "Sprache",
+    "pro": "Auf Pro upgraden"
+  },
+  "pro": {
+    "title": "PocketCoach Pro",
+    "price": "7,90 €/Monat",
+    "features": [
+      "Unbegrenzte Gewohnheiten",
+      "Unbegrenzte Gilden",
+      "Boss-Kämpfe",
+      "KI-Mikro-Coaching",
+      "Datenexport"
+    ],
+    "cta": "Kostenlos testen"
+  }
+}

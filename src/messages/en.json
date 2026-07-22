@@ -1,0 +1,78 @@
+{
+  "app": {
+    "name": "PocketCoach",
+    "tagline": "Micro-habits. Macro results.",
+    "footer": "Made with 🌱 for European minds"
+  },
+  "habits": {
+    "title": "Today's habits",
+    "completed": "{count}/{total}",
+    "addNew": "Add new habit"
+  },
+  "streak": {
+    "day": "day",
+    "days": "days",
+    "record": "Record!",
+    "onFire": "On fire!"
+  },
+  "sprout": {
+    "sprout": "Just planted!",
+    "growing": "Growing strong",
+    "blooming": "In full bloom!",
+    "wilting": "Needs attention..."
+  },
+  "xp": {
+    "level": "Level {level}",
+    "progress": "{current}/{total} XP"
+  },
+  "quest": {
+    "title": "Daily Quest",
+    "completeAll": "Complete all {count} habits today for +25 XP bonus",
+    "allDone": "All habits completed! +25 XP bonus"
+  },
+  "bossFight": {
+    "title": "Boss Fight",
+    "progress": "{current}/{target} completions",
+    "defeated": "Boss defeated! +{xp} XP",
+    "active": "Defeat the {name}"
+  },
+  "guild": {
+    "title": "Your Guild",
+    "members": "{count} members",
+    "invite": "Invite friend",
+    "join": "Join guild",
+    "leaderboard": "Leaderboard"
+  },
+  "reflection": {
+    "title": "Daily Reflection",
+    "placeholder": "How did today go? (1 sentence)",
+    "submit": "Save reflection",
+    "xpEarned": "+15 XP for reflecting"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "magicLink": "We'll send you a magic link",
+    "emailPlaceholder": "your@email.com",
+    "checkInbox": "Check your inbox for the magic link!"
+  },
+  "settings": {
+    "title": "Settings",
+    "timezone": "Timezone",
+    "notifications": "Push notifications",
+    "language": "Language",
+    "pro": "Upgrade to Pro"
+  },
+  "pro": {
+    "title": "PocketCoach Pro",
+    "price": "€7.90/month",
+    "features": [
+      "Unlimited habits",
+      "Unlimited guilds",
+      "Boss fights",
+      "AI micro-coaching",
+      "Data export"
+    ],
+    "cta": "Start free trial"
+  }
+}
