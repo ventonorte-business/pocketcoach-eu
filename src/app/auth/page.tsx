@@ -58,6 +58,19 @@ export default function AuthPage() {
             className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
             disabled={status === 'loading'}
           />
+          {/* GDPR Art. 8 — Age gate (16+) */}
+          <label className="flex items-start gap-2 text-xs text-gray-600">
+            <input
+              type="checkbox"
+              required
+              className="mt-0.5 rounded border-gray-300"
+            />
+            <span>
+              I confirm I am at least 16 years old and agree to the{' '}
+              <a href="/terms" className="text-green-600 underline">Terms</a>{' & '}
+              <a href="/privacy" className="text-green-600 underline">Privacy Policy</a>.
+            </span>
+          </label>
           <button
             type="submit"
             disabled={status === 'loading'}
