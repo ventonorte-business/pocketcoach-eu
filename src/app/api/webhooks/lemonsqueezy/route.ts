@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { sendDiscordAlert } from '@/lib/alerts/discord'
+import {
+  extractLemonSqueezyWebhookMeta,
+  processLemonSqueezyWebhookEvent,
+} from '@/lib/webhooks/lemonsqueezy'
 
 export const dynamic = 'force-dynamic'
 
@@ -54,15 +59,40 @@ export async function POST(request: Request) {
   // Verify HMAC signature (timing-safe)
   const isValid = await verifySignature(rawBody, signature)
   if (!isValid) {
+    await sendDiscordAlert(
+      'LemonSqueezy webhook rejected',
+      'Invalid signature — possible tampering or replay',
+      'warning',
+      {
+        event_name: request.headers.get('x-event-name') || 'unknown',
+        signature_present: !!signature,
+        ip: request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || null,
+      },
+    )
     return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
   }
 
-  const event = JSON.parse(rawBody)
-  const eventName: string = event.meta?.event_name || ''
-  const userId: string = event.meta?.custom_data?.user_id || ''
-  const eventId: string = event.meta?.webhook_id || event.data?.id || ''
+  let event: any
+  try {
+    event = JSON.parse(rawBody)
+  } catch (err) {
+    await sendDiscordAlert(
+      'LemonSqueezy webhook parse failed',
+      'Body was not valid JSON',
+      'error',
+      { error: String(err) },
+    )
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+  }
+  const { eventName, userId, eventId } = extractLemonSqueezyWebhookMeta(event)
 
   if (!userId) {
+    await sendDiscordAlert(
+      'LemonSqueezy webhook missing user_id',
+      'custom_data.user_id is required',
+      'warning',
+      { event_name: eventName, event_id: eventId },
+    )
     return NextResponse.json({ error: 'No user_id in custom_data' }, { status: 400 })
   }
 
@@ -77,6 +107,7 @@ export async function POST(request: Request) {
         event_id: eventId,
         event_name: eventName,
         payload: event,
+        status: 'received',
       })
 
     if (insertError) {
@@ -86,41 +117,44 @@ export async function POST(request: Request) {
       }
       // Other DB error — log but continue processing
       console.error('[webhook] insert error:', insertError.message)
+      await sendDiscordAlert(
+        'LemonSqueezy webhook DB insert failed',
+        insertError.message,
+        'error',
+        { event_name: eventName, event_id: eventId },
+      )
     }
   }
 
-  // Process subscription events
-  switch (eventName) {
-    case 'subscription_created':
-    case 'subscription_resumed':
-    case 'subscription_unpaused': {
+  try {
+    const result = await processLemonSqueezyWebhookEvent(supabaseAdmin, event, {
+      ip: request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || null,
+    })
+
+    if (eventId) {
       await supabaseAdmin
-        .from('profiles')
-        .update({ is_pro: true })
-        .eq('id', userId)
-      break
+        .from('webhook_events')
+        .update({ status: 'processed', last_error: null, processed_at: new Date().toISOString() })
+        .eq('source', 'lemonsqueezy')
+        .eq('event_id', eventId)
     }
 
-    case 'subscription_expired':
-    case 'subscription_cancelled':
-    case 'subscription_paused': {
+    return NextResponse.json({ received: true, result })
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err)
+    if (eventId) {
       await supabaseAdmin
-        .from('profiles')
-        .update({ is_pro: false })
-        .eq('id', userId)
-      break
+        .from('webhook_events')
+        .update({ status: 'failed', last_error: message })
+        .eq('source', 'lemonsqueezy')
+        .eq('event_id', eventId)
     }
-
-    case 'subscription_updated': {
-      const status = event.data?.attributes?.status
-      const isPro = status === 'active' || status === 'on_trial'
-      await supabaseAdmin
-        .from('profiles')
-        .update({ is_pro: isPro })
-        .eq('id', userId)
-      break
-    }
+    await sendDiscordAlert(
+      'LemonSqueezy webhook processing failed',
+      message,
+      'error',
+      { event_name: eventName, event_id: eventId, user_id: userId },
+    )
+    return NextResponse.json({ error: message }, { status: 500 })
   }
-
-  return NextResponse.json({ received: true })
 }

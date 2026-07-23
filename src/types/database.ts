@@ -10,6 +10,8 @@ export interface Profile {
   streak_updated_at: string | null
   timezone: string
   is_pro: boolean
+  is_admin: boolean
+  deleted_at: string | null
   created_at: string
   updated_at: string
 }
